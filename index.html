@@ -3,68 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vibe On Decor | Raipur</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <title>Vibe On Decor | Where Every Event Has a Vibe</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
     <style>
-        :root { --gold: #D4AF37; --dark: #1a1a1a; --white: #ffffff; }
-        * { margin:0; padding:0; box-sizing: border-box; font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
-        body { background: #fdfdfd; color: var(--dark); }
+        :root {
+            --primary-gold: #D4AF37;
+            --dark-gray: #1a1a1a;
+            --light-bg: #fdfdfd;
+            --whatsapp-green: #25D366;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        body { font-family: 'Poppins', sans-serif; line-height: 1.6; color: #444; background: var(--light-bg); overflow-x: hidden; }
 
         /* Navigation */
-        nav { background: var(--white); padding: 15px 10%; display: flex; justify-content: space-between; align-items: center; position: fixed; width: 100%; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        .logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--gold); font-weight: bold; }
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+        .logo { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--primary-gold); font-weight: bold; }
         .nav-links { list-style: none; display: flex; }
-        .nav-links li { margin-left: 20px; }
-        .nav-links a { text-decoration: none; color: var(--dark); font-weight: 500; font-size: 0.9rem; }
+        .nav-links li { margin-left: 25px; }
+        .nav-links a { text-decoration: none; color: #333; font-weight: 500; transition: 0.3s; }
+        .nav-links a:hover { color: var(--primary-gold); }
 
-        /* Hero Section (From Old Code) */
-        .hero { height: 80vh; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1519167758481-83f550bb49b3?q=80&w=1000') center/cover; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: white; margin-top: 60px; }
-        .hero h1 { font-family: 'Playfair Display'; font-size: 3rem; margin-bottom: 10px; }
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80') center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+        }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: 4rem; margin-bottom: 10px; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
+        .hero p { font-size: 1.3rem; margin-bottom: 30px; letter-spacing: 1px; }
+        
+        .cta-btn {
+            background: var(--whatsapp-green);
+            color: white;
+            padding: 15px 35px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            transition: 0.4s;
+        }
+        .cta-btn:hover { background: #128C7E; transform: translateY(-3px); box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5); }
 
-        /* Search Bar Section (New Point 2) */
-        .search-container { padding: 40px 10% 20px; text-align: center; background: #fff; }
-        #eventSearch { 
-            padding: 12px 25px; width: 90%; max-width: 500px; 
-            border: 2px solid var(--gold); border-radius: 50px; outline: none;
-            transition: 0.3s; font-size: 1rem;
-        }
+        /* General Section Styling */
+        section { padding: 100px 10%; text-align: center; }
+        .section-title { font-family: 'Playfair Display', serif; font-size: 2.8rem; margin-bottom: 15px; color: var(--dark-gray); position: relative; }
+        .section-title::after { content: ''; width: 60px; height: 3px; background: var(--primary-gold); display: block; margin: 10px auto 40px; }
 
-        /* Gallery Grid (New Point 1 & 3) */
-        .gallery-section { padding: 20px 10% 60px; }
-        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; }
-        .gallery-item { 
-            position: relative; overflow: hidden; border-radius: 15px; cursor: pointer; 
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: 0.3s; background: #fff;
-        }
-        .gallery-item:hover { transform: translateY(-5px); }
-        .gallery-item img { width: 100%; height: 280px; object-fit: cover; }
-        .item-info { padding: 15px; text-align: center; }
-        .item-info h3 { font-size: 1.1rem; color: var(--dark); }
-        .item-info p { color: var(--gold); font-weight: bold; }
+        /* Features Cards */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; }
+        .card { background: white; padding: 40px 20px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: 0.3s; }
+        .card:hover { transform: translateY(-10px); }
+        .card i { font-size: 2.5rem; color: var(--primary-gold); margin-bottom: 15px; display: block; }
 
-        /* Modal / Popup (New Point 1) */
-        .modal {
-            display: none; position: fixed; z-index: 2000;
-            left: 0; top: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.85); backdrop-filter: blur(5px);
-            justify-content: center; align-items: center; padding: 20px;
+        /* Pricing Table */
+        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 40px; }
+        .price-card {
+            background: #fff;
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid #eee;
+            position: relative;
+            transition: 0.4s;
         }
-        .modal-content {
-            background: white; padding: 30px; border-radius: 20px;
-            max-width: 450px; width: 100%; position: relative;
-            text-align: center; animation: zoomIn 0.3s;
-        }
-        @keyframes zoomIn { from {transform: scale(0.8); opacity: 0;} to {transform: scale(1); opacity: 1;} }
-        .close-btn { position: absolute; top: 10px; right: 20px; font-size: 30px; cursor: pointer; color: #888; }
-        .modal-price { font-size: 24px; color: var(--gold); font-weight: bold; margin: 15px 0; }
-        .book-now { 
-            background: #25D366; color: white; padding: 12px 30px; 
-            text-decoration: none; border-radius: 50px; display: inline-block; font-weight: 600;
-        }
+        .price-card:hover { box-shadow: 0 15px 40px rgba(0,0,0,0.1); }
+        .popular { border: 2.5px solid var(--primary-gold); transform: scale(1.05); z-index: 2; }
+        .popular-tag { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--primary-gold); color: white; padding: 5px 20px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; }
+        .price { font-size: 2.2rem; font-weight: 700; color: var(--primary-gold); margin: 20px 0; }
+        .price-card ul { list-style: none; text-align: left; margin: 25px 0; }
+        .price-card li { margin-bottom: 12px; font-size: 0.95rem; }
 
-        .section-title { text-align: center; font-family: 'Playfair Display'; font-size: 2.2rem; margin: 40px 0 10px; }
-        footer { background: var(--dark); color: white; padding: 40px 10%; text-align: center; }
+        /* Gallery */
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-top: 30px; }
+        .img-box { height: 250px; background: #eee; border-radius: 10px; display: flex; align-items: center; justify-content: center; border: 2px dashed #bbb; color: #888; }
+
+        /* Contact Section */
+        .contact-box { background: var(--dark-gray); color: white; padding: 50px; border-radius: 20px; margin-top: 40px; }
+        .contact-box h3 { color: var(--primary-gold); margin-bottom: 20px; }
+
+        /* Footer */
+        footer { background: #000; color: #888; padding: 50px 10%; text-align: center; }
+        .social-links a { color: #fff; margin: 0 15px; font-size: 1.5rem; text-decoration: none; transition: 0.3s; }
+        .social-links a:hover { color: var(--primary-gold); }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.8rem; }
+            .nav-links { display: none; }
+            .popular { transform: scale(1); }
+        }
     </style>
 </head>
 <body>
@@ -73,100 +121,102 @@
         <div class="logo">Vibe On Decor</div>
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
-            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#pricing">Pricing</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
 
     <section class="hero" id="home">
-        <h1 data-aos="fade-up">Vibe On Decor</h1>
-        <p data-aos="fade-up" data-aos-delay="200">Where Every Event Has a Vibe ✨</p>
-    </section>
-
-    <h2 class="section-title" id="gallery">Our Gallery</h2>
-
-    <div class="search-container" data-aos="fade-up">
-        <input type="text" id="eventSearch" placeholder="Search by event or price (e.g. Birthday, 2999)..." onkeyup="filterEvents()">
-    </div>
-
-    <section class="gallery-section">
-        <div class="gallery-grid" id="galleryList">
-            
-            <div class="gallery-item" data-category="birthday" data-price="2999" data-aos="zoom-in" 
-                 onclick="openModal('Birthday Classic', '2,999', 'Includes: Full Balloon Arch, Name Board, Cake Table decoration, and Backdrop lights.', 'https://images.unsplash.com/photo-1530103043960-ef38714abb15?q=80&w=500')">
-                <img src="https://images.unsplash.com/photo-1530103043960-ef38714abb15?q=80&w=500" alt="Decor">
-                <div class="item-info">
-                    <h3>Birthday Classic</h3>
-                    <p>₹2,999</p>
-                </div>
-            </div>
-
-            <div class="gallery-item" data-category="wedding" data-price="49999" data-aos="zoom-in" data-aos-delay="100"
-                 onclick="openModal('Wedding Silver', '49,999', 'Includes: Floral Entry Gate, Stage Backdrop, Varmala setup, and Guest seating decor.', 'https://images.unsplash.com/photo-1519167758481-83f550bb49b3?q=80&w=500')">
-                <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?q=80&w=500" alt="Decor">
-                <div class="item-info">
-                    <h3>Wedding Silver</h3>
-                    <p>₹49,999</p>
-                </div>
-            </div>
-
+        <div data-aos="zoom-in" data-aos-duration="1500">
+            <h1>Vibe On Decor ✨</h1>
+            <p>Where Every Event Has a Vibe</p>
+            <p style="margin-bottom: 40px;">Birthdays | Weddings | Corporate Events</p>
+            <a href="https://wa.me/916266683859" class="cta-btn">WhatsApp Us for Bookings</a>
         </div>
     </section>
 
-    <div id="infoModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal()">&times;</span>
-            <img id="modalImg" src="" style="width:100%; border-radius:12px; height:220px; object-fit:cover;">
-            <h2 id="modalTitle" style="margin-top:20px; font-family: 'Playfair Display';"></h2>
-            <p id="modalDesc" style="color:#555; margin:15px 0; font-size: 0.95rem;"></p>
-            <div class="modal-price" id="modalPrice"></div>
-            <a href="https://wa.me/916266683859" class="book-now">Book Now on WhatsApp</a>
+    <section id="about">
+        <h2 class="section-title" data-aos="fade-up">Our Story</h2>
+        <p style="max-width: 800px; margin: 0 auto; font-size: 1.1rem;" data-aos="fade-up" data-aos-delay="200">
+            At Vibe On Decor, we turn ordinary spaces into unforgettable celebrations. 
+            We focus on creativity, quality, and the perfect vibe for every occasion.
+        </p>
+        
+        <div class="grid" style="margin-top: 60px;">
+            <div class="card" data-aos="flip-left" data-aos-delay="100"><i>✨</i><h3>Unique Designs</h3></div>
+            <div class="card" data-aos="flip-left" data-aos-delay="300"><i>💰</i><h3>Budget Friendly</h3></div>
+            <div class="card" data-aos="flip-left" data-aos-delay="500"><i>⏰</i><h3>On-time Setup</h3></div>
         </div>
-    </div>
+    </section>
 
-    <footer id="contact">
-        <p>&copy; 2026 Vibe On Decor | Raipur</p>
-        <p style="margin-top:10px; font-size:0.8rem; color:#aaa;">Follow us on Instagram @vibeondecor._</p>
+    <section id="services" style="background: #f9f9f9;">
+        <h2 class="section-title" data-aos="fade-down">Our Services</h2>
+        <div class="grid">
+            <div class="card" data-aos="fade-right"><h3>🎈 Birthday Decor</h3></div>
+            <div class="card" data-aos="fade-up"><h3>💍 Wedding Decor</h3></div>
+            <div class="card" data-aos="fade-left"><h3>🏢 Corporate Events</h3></div>
+        </div>
+    </section>
+
+    <section id="pricing">
+        <h2 class="section-title" data-aos="zoom-in">Exclusive Packages</h2>
+        
+        <h3 style="margin: 30px 0;">🎉 Birthday Specials</h3>
+        <div class="pricing-grid">
+            <div class="price-card" data-aos="fade-up">
+                <h3>Vibe Basic</h3>
+                <div class="price">₹4,999</div>
+                <ul><li>✔ Balloon arch</li><li>✔ Banner</li><li>✔ Cake table</li></ul>
+            </div>
+            <div class="price-card popular" data-aos="fade-up" data-aos-delay="200">
+                <div class="popular-tag">BEST SELLER ❤️</div>
+                <h3>Vibe Special</h3>
+                <div class="price">₹9,999</div>
+                <ul><li>✔ Theme Decoration</li><li>✔ Foil Balloons</li><li>✔ LED Lights</li><li>✔ Name Board</li></ul>
+            </div>
+            <div class="price-card" data-aos="fade-up" data-aos-delay="400">
+                <h3>Vibe Premium</h3>
+                <div class="price">₹14,999</div>
+                <ul><li>✔ Premium Theme</li><li>✔ Neon Lights</li><li>✔ Entrance Decor</li></ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery">
+        <h2 class="section-title" data-aos="fade-up">Gallery</h2>
+        <div class="gallery-grid">
+            <div class="img-box" data-aos="zoom-in">Photo 1</div>
+            <div class="img-box" data-aos="zoom-in" data-aos-delay="100">Photo 2</div>
+            <div class="img-box" data-aos="zoom-in" data-aos-delay="200">Photo 3</div>
+            <div class="img-box" data-aos="zoom-in" data-aos-delay="300">Photo 4</div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="contact-box" data-aos="zoom-out">
+            <h2 style="color: white; margin-bottom: 20px;">Let's Plan Your Next Event</h2>
+            <p>📍 Raipur, Chhattisgarh</p>
+            <p>📞 6266683859</p>
+            <br>
+            <a href="https://wa.me/916266683859" class="cta-btn">Send Message on WhatsApp</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="social-links">
+            <a href="https://www.instagram.com/vibeondecor._">Instagram</a>
+        </div>
+        <p style="margin-top: 20px;">&copy; 2026 Vibe On Decor – Raipur</p>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 800, once: true });
-
-        // Point 1: Open Modal
-        function openModal(title, price, desc, img) {
-            document.getElementById('modalTitle').innerText = title;
-            document.getElementById('modalPrice').innerText = "Price: ₹" + price;
-            document.getElementById('modalDesc').innerText = desc;
-            document.getElementById('modalImg').src = img;
-            document.getElementById('infoModal').style.display = 'flex';
-        }
-
-        function closeModal() {
-            document.getElementById('infoModal').style.display = 'none';
-        }
-
-        // Point 2: Search Filter
-        function filterEvents() {
-            let input = document.getElementById('eventSearch').value.toLowerCase();
-            let items = document.getElementsByClassName('gallery-item');
-
-            for (let i = 0; i < items.length; i++) {
-                let category = items[i].getAttribute('data-category');
-                let price = items[i].getAttribute('data-price');
-                let title = items[i].getElementsByTagName('h3')[0].innerText.toLowerCase();
-
-                if (title.includes(input) || category.includes(input) || price.includes(input)) {
-                    items[i].style.display = "";
-                } else {
-                    items[i].style.display = "none";
-                }
-            }
-        }
-
-        window.onclick = function(event) {
-            if (event.target == document.getElementById('infoModal')) { closeModal(); }
-        }
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
     </script>
 </body>
 </html>
